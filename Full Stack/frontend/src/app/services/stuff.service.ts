@@ -31,7 +31,7 @@ export class StuffService {
   public stuff$ = new Subject<Thing[]>();
 
   getStuff() {
-    this.http.get('http://localhost:3000/api/stuff').subscribe(
+    this.http.get('http://localhost:3000/api/mobile').subscribe(
       (stuff: Thing[]) => {
         if (stuff) {
           this.stuff = stuff;
@@ -50,7 +50,7 @@ export class StuffService {
 
   getThingById(id: string) {
     return new Promise((resolve, reject) => {
-      this.http.get('http://localhost:3000/api/stuff/' + id).subscribe(
+      this.http.get('http://localhost:3000/api/mobile/' + id).subscribe(
         (response) => {
           resolve(response);
         },
@@ -63,7 +63,7 @@ export class StuffService {
 
   createNewThing(thing: Thing) {
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:3000/api/stuff', thing).subscribe(
+      this.http.post('http://localhost:3000/api/mobile', thing).subscribe(
         (response) => {
           resolve(response);
         },
@@ -79,7 +79,7 @@ export class StuffService {
       const thingData = new FormData();
       thingData.append('thing', JSON.stringify(thing));
       thingData.append('image', image, thing.title);
-      this.http.post('http://localhost:3000/api/stuff', thingData).subscribe(
+      this.http.post('http://localhost:3000/api/mobile', thingData).subscribe(
         (response) => {
           resolve(response);
         },
@@ -92,7 +92,7 @@ export class StuffService {
 
   modifyThing(id: string, thing: Thing) {
     return new Promise((resolve, reject) => {
-      this.http.put('http://localhost:3000/api/stuff/' + id, thing).subscribe(
+      this.http.put('http://localhost:3000/api/mobile/' + id, thing).subscribe(
         (response) => {
           resolve(response);
         },
@@ -114,7 +114,7 @@ export class StuffService {
         thingData.append('thing', JSON.stringify(thing));
         thingData.append('image', image, thing.title);
       }
-      this.http.put('http://localhost:3000/api/stuff/' + id, thingData).subscribe(
+      this.http.put('http://localhost:3000/api/mobile/' + id, thingData).subscribe(
         (response) => {
           resolve(response);
         },
@@ -127,7 +127,7 @@ export class StuffService {
 
   deleteThing(id: string) {
     return new Promise((resolve, reject) => {
-      this.http.delete('http://localhost:3000/api/stuff/' + id).subscribe(
+      this.http.delete('http://localhost:3000/api/mobile/' + id).subscribe(
         (response) => {
           resolve(response);
         },
