@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost:27017/stuff')
         console.log('Cant connect to mongo');
         console.log(error);
     });
+    ////
 
 const app = express();
 
